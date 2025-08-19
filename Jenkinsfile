@@ -1,45 +1,49 @@
 pipeline {
-    agent {
+    agent  {
         label 'AGENT-1'
     }
-    environment {
-        appVersion = '' 
-        REGION  = "us-east-1" 
-        PROJECT  = "roboshop" 
-        COMPONENT = "catalogue" 
-        ACC_ID    = "888947293288"
+    environment { 
+        appVersion = ''
+        REGION = "us-east-1"
+        ACC_ID = "888947293288"
+        PROJECT = "roboshop"
+        COMPONENT = "catalogue"
     }
     options {
-        timeout(time: 30 , unit: 'MINUTES') 
-        disableConcurrentBuilds() 
+        timeout(time: 30, unit: 'MINUTES') 
+        disableConcurrentBuilds()
     }
     parameters {
-        string(name: 'appVersion', description: 'Image version of application')
-        choice(name: 'deploy_to', choices: ['dev','qa','prod'], description: 'Pick the Environment')
+        string(name: 'appVersion', description: 'Image version of the application')
+        choice(name: 'deploy_to', choices: ['dev', 'qa', 'prod'], description: 'Pick the Environment')
     }
-    //Build 
+    // Build
     stages {
         stage('Deploy') {
             steps {
-                 script {
+                script {
                     withAWS(credentials: 'aws-creds', region: 'us-east-1') {
-                        aws eks update-kubeconfig --region $REGION --name "$PROJECT-${params.deploy_to}"
-                        kubectl get nodes 
+                        sh """
+                            aws eks update-kubeconfig --region $REGION --name "$PROJECT-${params.deploy_to}"
+                            kubectl get nodes
+                           
+                        """
                     }
-                 }
+                }
             }
         }
     }
-    post {
-        always {
-            echo "i will always say Hello again!" 
-            deleteDir() 
+
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+            deleteDir()
         }
-        success {
-            echo "Hello Success" 
+        success { 
+            echo 'Hello Success'
         }
-        failure {
-            echo "Hello Failure"
+        failure { 
+            echo 'Hello Failure'
         }
     }
 }
