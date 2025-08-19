@@ -10,7 +10,7 @@ pipeline {
         ACC_ID    = "888947293288"
     }
     options {
-        timeout(time: 30 , unit: ;'MINUTES') 
+        timeout(time: 30 , unit: 'MINUTES') 
         disableConcurrentBuilds() 
     }
     parameters {
