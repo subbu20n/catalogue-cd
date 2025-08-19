@@ -1,0 +1,6 @@
+deployment:
+     imageURL: subbu2/catalogue 
+     imageVersion: IMAGE_VERSION 
+hpa: 
+   maxReplicas: 5
+   utilization: 80      
