@@ -31,7 +31,7 @@ pipeline {
                             helm upgrade --install $COMPONENT -f values-${params.deploy_to}.yaml -n $PROJECT .
                         """
                     }
-                }
+                } 
             }
         }
     }
