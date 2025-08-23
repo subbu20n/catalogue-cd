@@ -29,10 +29,23 @@ pipeline {
                             
                         """
                     }
-            }
-         }
+                }
+            } 
+        }
     }
-}
+    post {
+        actions {
+            echo "I will always say Hello Again!"
+            deleteDir()
+        }
+        success {
+            echo "Hello Success"
+        }
+        failure {
+            echo "Hello Failure"
+        }
+    }
+}    
     
        
    
