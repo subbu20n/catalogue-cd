@@ -34,7 +34,7 @@ pipeline {
         }
     }
     post {
-        actions {
+        always {
             echo "I will always say Hello Again!"
             deleteDir()
         }
