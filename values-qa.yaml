@@ -4,3 +4,6 @@ deployment:
 hpa: 
    maxReplicas: 5
    utilization: 80      
+configMap: 
+    MONGO_URL: mongodb://mongodb:27017/catalogue 
+  
