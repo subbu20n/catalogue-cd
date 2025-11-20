@@ -48,7 +48,7 @@ pipeline {
                             """ 
                             def rollbackStatus = sh(returnStdout: true, script: "kubectl rollout status deployment/catalogue --timeout=30s -n $PROJECT || echo FAILED").trim() 
                             if (rollbackStatus.contains("successfully rolled out")) {
-                                echo "Deployment is Failure,Rollback is success" 
+                                error "Deployment is Failure,Rollback is success" 
                             }
                             else {
                                error "Deployment is Failure, Rollback is Failure,Application is not Running"   
