@@ -3,4 +3,4 @@ deployment:
    imageVersion: IMAGE_VERSION
 hpa: 
   maxReplicas: 10
-  utilization: 75     
+  utilization: 75      
