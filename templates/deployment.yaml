@@ -33,4 +33,4 @@ spec:
                      memory: "256Mi" 
              envFrom:
              - configMapRef: 
-                    name: catalogue                                              
+                    name: catalogue                                               
