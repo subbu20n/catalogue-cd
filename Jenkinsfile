@@ -30,7 +30,7 @@ pipeline {
                             #sed -i "s/IMAGE_VERSION/${params.appVersion}/g" values-${params.deploy_to}.yaml
                             #helm upgrade --install $COMPONENT -f values-${params.deploy_to}.yaml -n $PROJECT .
                             kubectl apply -f application.yaml
-                        """
+                        """ 
                     }
                 }
             }
@@ -113,4 +113,4 @@ pipeline {
             echo 'Hello Failure'
         }
     }
-}
+}  
