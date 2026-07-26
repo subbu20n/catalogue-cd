@@ -9,7 +9,7 @@ pipeline {
         PROJECT = "roboshop"
         COMPONENT = "catalogue"
     }
-    options {
+    options {  
         timeout(time: 30, unit: 'MINUTES') 
         disableConcurrentBuilds()
     }
